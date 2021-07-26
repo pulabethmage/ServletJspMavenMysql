@@ -11,9 +11,22 @@
   	<description></description>
   	<servlet-class>co.urbanraw.web.GetBooksController</servlet-class>
   </servlet>
-  <servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AddBooksController</servlet-name>
+  	<display-name>AddBooksController</display-name>
+  	<description></description>
+  	<servlet-class>co.urbanraw.web.AddBooksController</servlet-class>
+  </servlet> 
+
+ <servlet-mapping>
   	<servlet-name>GetBooksController</servlet-name>
   	<url-pattern>/getBook</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>AddBooksController</servlet-name>
+  	<url-pattern>/addBook</url-pattern>
   </servlet-mapping>
   
 </web-app>

@@ -9,13 +9,17 @@
 </head>
 <body>
 
+<div style=" border: 3px solid green; display: flex; flex-direction: column;  justify-content: center;  align-items: center;  text-align: center;  min-height: 100vh;">
+
 <%
-
 	Books books = (Books)request.getAttribute("booksdata");
-
-	out.println(books);
 
 %>
 
+Aurthor Name : <h1> <% out.println(books.getAname());%></h1> 
+And the Book Name : <h1> <% out.println(books.getBname());%></h1>
+
+
+</div>
 </body>
 </html>

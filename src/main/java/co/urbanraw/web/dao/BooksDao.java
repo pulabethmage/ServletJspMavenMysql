@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import co.urbanraw.web.model.Books;
+import jakarta.servlet.RequestDispatcher;
 
 public class BooksDao {
 	
@@ -34,14 +35,53 @@ public class BooksDao {
 				b.setAname(rs.getString("book_tuthr"));
 			}
 			
+			con.close();
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-	
+		
 		
 		return b;
 	}
+	
+	
+	public String addBooks(String bookname,String authorname)
+	{
+		//System.out.println(bookname +"  "+ authorname);
+		
+		String resultstring = "";
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, mysqluser, mysqlpass);
+			PreparedStatement pst = con.prepareStatement("insert into books_tbl (book_tuthr,book_name) values(?,?)");
+			
+			pst.setString(1, authorname);
+			pst.setString(2, bookname);
+		
+			int result = pst.executeUpdate();
+			pst.close();
+			con.close();	
+			
+			
+			
+			if (result > 0) {
+				resultstring = "done";
+	        } else {
+	        	resultstring = "error";
+	        }
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return resultstring;
+		
+	}
+	
 }
